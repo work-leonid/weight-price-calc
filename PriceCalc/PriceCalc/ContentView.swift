@@ -23,20 +23,30 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             Form {
-                
-                Section {
+                VStack(alignment: .leading, spacing: 0) {
                     Text("\(price)₽")
+                        .font(.system(size: 100, weight: .thin))
+                        .padding(.vertical, -10)
                     Text("за \(Int(inputWeight) ?? 0) грамм")
+                        .font(.title3)
+                        .foregroundColor(.secondary)
                 }
+                .padding(.vertical)
                 
-                Section {
-                    TextField("Weight in grams", text: $inputWeight)
-                        .keyboardType(.decimalPad)
-                        .foregroundColor(.red)
+                HStack {
+                    
                     HStack {
-                        TextField("Price kg", text: $inputPrice)
+                        TextField("Weight", text: $inputWeight)
                             .keyboardType(.decimalPad)
-                        Text("кг")
+                        Text("грамм")
+                    }
+                    
+                    Divider()
+                    
+                    HStack {
+                        TextField("Price", text: $inputPrice)
+                            .keyboardType(.decimalPad)
+                        Text("₽/кг")
                     }
                     
                 }
