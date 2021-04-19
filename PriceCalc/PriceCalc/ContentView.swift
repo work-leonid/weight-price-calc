@@ -7,12 +7,22 @@
 
 import SwiftUI
 
+enum MainText: String {
+    case title = "Сколько?"
+    case weightGramm = "грамм"
+    case placeholderWeight = "Вес"
+    case placeholderPrice = "Цена"
+    case buttonClearAll = "Очистить"
+    case pricePerKg = "₽/кг"
+}
+
 struct ContentView: View {
     
     @State private var inputWeight = ""
     @State private var inputPrice = ""
     @State private var checkAmount = 0
-    @State private var isResponder = true
+    @State private var focusWeightTextField = true
+    @State private var focusPriceTextField = false
     
     var price: Int {
         let priceKg = Int(inputPrice) ?? 0
@@ -21,6 +31,13 @@ struct ContentView: View {
         return sum
     }
     
+    let gram = MainText.weightGramm.rawValue
+    let title = MainText.title.rawValue
+    let placeholderWeight = MainText.placeholderWeight.rawValue
+    let placeholderPrice = MainText.placeholderPrice.rawValue
+    let pricePerKg = MainText.pricePerKg.rawValue
+    let buttonClearAll = MainText.buttonClearAll.rawValue
+    
     var body: some View {
         NavigationView {
             Form {
@@ -28,7 +45,7 @@ struct ContentView: View {
                     Text("\(price)₽")
                         .font(.system(size: 100, weight: .thin))
                         .padding(.vertical, -10)
-                    Text("за \(Int(inputWeight) ?? 0) грамм")
+                    Text("за \(Int(inputWeight) ?? 0) \(gram)")
                         .font(.title3)
                         .foregroundColor(.secondary)
                 }
@@ -37,22 +54,15 @@ struct ContentView: View {
                 HStack {
                     
                     HStack {
-                        TextFieldFirstResponder(text: $inputWeight, isResponder: $isResponder, placeholder: "Weight")
-                        
-//                            .keyboardType(.decimalPad)
-//                        TextFieldFirstResponder(text: $inputWeight, placeholder: "Weight").keyboardType(.decimalPad)
-//                            .keyboardType(.decimalPad)
-//                        TextField("Weight", text: $inputWeight)
-
-                        Text("грамм")
+                        TextFieldFirstResponder(text: $inputWeight, isResponder: $focusWeightTextField, placeholder: placeholderWeight)
+                        Text(gram)
                     }
                     
                     Divider()
                     
                     HStack {
-                        TextField("Price", text: $inputPrice)
-                            .keyboardType(.decimalPad)
-                        Text("₽/кг")
+                        TextFieldFirstResponder(text: $inputPrice, isResponder: $focusPriceTextField, placeholder: placeholderPrice)
+                        Text(pricePerKg)
                     }
                     
                 }
@@ -60,12 +70,14 @@ struct ContentView: View {
                 Button(action: {
                     inputPrice = ""
                     inputWeight = ""
+                    focusWeightTextField = true
+                    focusPriceTextField = false
                 }, label: {
-                    Text("Clear all")
+                    Text(buttonClearAll)
                 })
             
             }
-            .navigationBarTitle("How much?")
+            .navigationBarTitle(title)
         }
     }
     
