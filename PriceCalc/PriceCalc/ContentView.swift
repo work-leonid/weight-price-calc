@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var inputWeight = ""
     @State private var inputPrice = ""
     @State private var checkAmount = 0
+    @State private var isResponder = true
     
     var price: Int {
         let priceKg = Int(inputPrice) ?? 0
@@ -36,8 +37,13 @@ struct ContentView: View {
                 HStack {
                     
                     HStack {
-                        TextField("Weight", text: $inputWeight)
-                            .keyboardType(.decimalPad)
+                        TextFieldFirstResponder(text: $inputWeight, isResponder: $isResponder, placeholder: "Weight")
+                        
+//                            .keyboardType(.decimalPad)
+//                        TextFieldFirstResponder(text: $inputWeight, placeholder: "Weight").keyboardType(.decimalPad)
+//                            .keyboardType(.decimalPad)
+//                        TextField("Weight", text: $inputWeight)
+
                         Text("грамм")
                     }
                     
@@ -50,8 +56,14 @@ struct ContentView: View {
                     }
                     
                 }
-                
-                
+            
+                Button(action: {
+                    inputPrice = ""
+                    inputWeight = ""
+                }, label: {
+                    Text("Clear all")
+                })
+            
             }
             .navigationBarTitle("How much?")
         }

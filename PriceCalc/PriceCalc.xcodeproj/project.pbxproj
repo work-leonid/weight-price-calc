@@ -11,6 +11,7 @@
 		FB215354262DE5D600BE529D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB215353262DE5D600BE529D /* ContentView.swift */; };
 		FB215356262DE5D800BE529D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB215355262DE5D800BE529D /* Assets.xcassets */; };
 		FB215359262DE5D800BE529D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB215358262DE5D800BE529D /* Preview Assets.xcassets */; };
+		FB215363262E21D900BE529D /* TextFieldFirstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB215362262E21D900BE529D /* TextFieldFirstResponder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		FB215355262DE5D800BE529D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB215358262DE5D800BE529D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FB21535A262DE5D800BE529D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB215362262E21D900BE529D /* TextFieldFirstResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFirstResponder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				FB215351262DE5D600BE529D /* PriceCalcApp.swift */,
 				FB215353262DE5D600BE529D /* ContentView.swift */,
+				FB215362262E21D900BE529D /* TextFieldFirstResponder.swift */,
 				FB215355262DE5D800BE529D /* Assets.xcassets */,
 				FB21535A262DE5D800BE529D /* Info.plist */,
 				FB215357262DE5D800BE529D /* Preview Content */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB215363262E21D900BE529D /* TextFieldFirstResponder.swift in Sources */,
 				FB215354262DE5D600BE529D /* ContentView.swift in Sources */,
 				FB215352262DE5D600BE529D /* PriceCalcApp.swift in Sources */,
 			);
