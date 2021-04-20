@@ -17,26 +17,9 @@ enum MainText: String {
     case pricePerKg = "₽/кг"
 }
 
-extension Publishers {
-    static var keyboardHeight: AnyPublisher<CGFloat, Never> {
-        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
-            .map { $0.keyboardHeight }
-        
-        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
-            .map { _ in CGFloat(0) }
-        
-        return MergeMany(willShow, willHide)
-            .eraseToAnyPublisher()
-    }
-}
 
-extension Notification {
-    var keyboardHeight: CGFloat {
-        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
-    }
-}
 
-struct ContentView: View {
+struct MainView: View {
     var body: some View {
         KeyboardAvoidance()
     }
@@ -113,6 +96,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainView()
     }
 }

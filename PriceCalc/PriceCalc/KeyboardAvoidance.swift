@@ -13,15 +13,21 @@ struct KeyboardAvoidance: View {
     @State private var text = ""
     @State private var keyboardHeight: CGFloat = 0
     @State private var isResponder = true
+    @State private var isResponder2 = false
     
     var body: some View {
         VStack() {
             
             Spacer()
             
-            TextFieldFirstResponder(text: $text, isResponder: $isResponder, placeholder: "hey")
-                .frame(height: 40)
-                .background(Color.red)
+            HStack {
+                TextFieldFirstResponder(text: $text, isResponder: $isResponder, placeholder: "hey")
+//                    .frame(height: 40)
+//                    .background(Color.red)
+                TextFieldFirstResponder(text: $text, isResponder: $isResponder2, placeholder: "hey")
+            }
+            .frame(height: 40)
+            .background(Color.red)
         }
         .padding()
         
