@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 enum MainText: String {
     case title = "Сколько?"
@@ -16,72 +17,99 @@ enum MainText: String {
     case pricePerKg = "₽/кг"
 }
 
-struct ContentView: View {
-    
-    @State private var inputWeight = ""
-    @State private var inputPrice = ""
-    @State private var checkAmount = 0
-    @State private var focusWeightTextField = true
-    @State private var focusPriceTextField = false
-    
-    var price: Int {
-        let priceKg = Int(inputPrice) ?? 0
-        let weightKg = Int(inputWeight) ?? 0
-        let sum = (priceKg * weightKg) / 1000
-        return sum
+extension Publishers {
+    static var keyboardHeight: AnyPublisher<CGFloat, Never> {
+        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
+            .map { $0.keyboardHeight }
+        
+        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
+            .map { _ in CGFloat(0) }
+        
+        return MergeMany(willShow, willHide)
+            .eraseToAnyPublisher()
     }
-    
-    let gram = MainText.weightGramm.rawValue
-    let title = MainText.title.rawValue
-    let placeholderWeight = MainText.placeholderWeight.rawValue
-    let placeholderPrice = MainText.placeholderPrice.rawValue
-    let pricePerKg = MainText.pricePerKg.rawValue
-    let buttonClearAll = MainText.buttonClearAll.rawValue
-    
-    var body: some View {
-        NavigationView {
-            Form {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("\(price)₽")
-                        .font(.system(size: 100, weight: .thin))
-                        .padding(.vertical, -10)
-                    Text("за \(Int(inputWeight) ?? 0) \(gram)")
-                        .font(.title3)
-                        .foregroundColor(.secondary)
-                }
-                .padding(.vertical).padding(.vertical)
-                
-                HStack {
-                    
-                    HStack {
-                        TextFieldFirstResponder(text: $inputWeight, isResponder: $focusWeightTextField, placeholder: placeholderWeight)
-                        Text(gram)
-                    }
-                    
-                    Divider()
-                    
-                    HStack {
-                        TextFieldFirstResponder(text: $inputPrice, isResponder: $focusPriceTextField, placeholder: placeholderPrice)
-                        Text(pricePerKg)
-                    }
-                    
-                }
-            
-                Button(action: {
-                    inputPrice = ""
-                    inputWeight = ""
-                    focusWeightTextField = true
-                    focusPriceTextField = false
-                }, label: {
-                    Text(buttonClearAll)
-                })
-            
-            }
-            .navigationBarTitle(title)
-        }
-    }
-    
 }
+
+extension Notification {
+    var keyboardHeight: CGFloat {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        KeyboardAvoidance()
+    }
+}
+
+//struct ContentView: View {
+//
+//    @State private var inputWeight = ""
+//    @State private var inputPrice = ""
+//    @State private var checkAmount = 0
+//    @State private var focusWeightTextField = true
+//    @State private var focusPriceTextField = false
+//
+//    @State private var keyboardHeight: CGFloat = 0
+//
+//    var price: Int {
+//        let priceKg = Int(inputPrice) ?? 0
+//        let weightKg = Int(inputWeight) ?? 0
+//        let sum = (priceKg * weightKg) / 1000
+//        return sum
+//    }
+//
+//    let gram = MainText.weightGramm.rawValue
+//    let title = MainText.title.rawValue
+//    let placeholderWeight = MainText.placeholderWeight.rawValue
+//    let placeholderPrice = MainText.placeholderPrice.rawValue
+//    let pricePerKg = MainText.pricePerKg.rawValue
+//    let buttonClearAll = MainText.buttonClearAll.rawValue
+//
+//    var body: some View {
+//        NavigationView {
+//            Form {
+//                VStack(alignment: .leading, spacing: 0) {
+//                    Text("\(price)₽")
+//                        .font(.system(size: 100, weight: .thin))
+//                        .padding(.vertical, -10)
+//                    Text("за \(Int(inputWeight) ?? 0) \(gram)")
+//                        .font(.title3)
+//                        .foregroundColor(.secondary)
+//                }
+//                .padding(.vertical).padding(.vertical)
+//
+//                HStack {
+//
+//                    HStack {
+//                        TextFieldFirstResponder(text: $inputWeight, isResponder: $focusWeightTextField, placeholder: placeholderWeight)
+//                        Text(gram)
+//                    }
+//
+//                    Divider()
+//
+//                    HStack {
+//                        TextFieldFirstResponder(text: $inputPrice, isResponder: $focusPriceTextField, placeholder: placeholderPrice)
+//                        Text(pricePerKg)
+//                    }
+//
+//                }
+//
+//                Button(action: {
+//                    inputPrice = ""
+//                    inputWeight = ""
+//                    focusWeightTextField = true
+//                    focusPriceTextField = false
+//                }, label: {
+//                    Text(buttonClearAll)
+//                })
+//
+//            }
+//            .navigationBarTitle(title)
+//        }
+//    }
+//
+//}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
