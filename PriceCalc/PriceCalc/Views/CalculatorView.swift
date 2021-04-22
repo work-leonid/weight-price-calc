@@ -34,7 +34,7 @@ struct CalculatorView: View {
     var inputView: some View {
         HStack {
             HStack {
-                TextField("Вес", text: $weightInput)
+                TextField(LocalizedStringKey("input.placeholder.weight"), text: $weightInput)
                     .keyboardType(.decimalPad)
                 Text("грамм")
             }
@@ -42,9 +42,9 @@ struct CalculatorView: View {
             Divider()
             
             HStack {
-                TextField("Цена", text: $priceInput)
-                    .keyboardType(.decimalPad)
-                Text("₽/кг")
+                TextField("input.placeholder.price", text: $priceInput)
+                
+                Text("\("₽") text.perkg")
             }
         }
     }
@@ -60,10 +60,10 @@ struct CalculatorView: View {
                 Button(action: {
                     clearAll()
                 }, label: {
-                    Text("Очистить")
+                    Text("button.clearAll")
                 })
                 }
-                .navigationBarTitle("Сколько сколько?")
+            .navigationBarTitle(LocalizedStringKey("navbar.title"))
         }
     }
     
@@ -76,5 +76,6 @@ struct CalculatorView: View {
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         CalculatorView()
+            .environment(\.locale, .init(identifier: "en"))
     }
 }

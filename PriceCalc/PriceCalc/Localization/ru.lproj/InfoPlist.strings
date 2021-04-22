@@ -1,7 +1,9 @@
 /* 
-  Localize.strings
+  InfoPlist.strings
   PriceCalc
 
   Created by Leonid Nazarov on 22.04.2021.
   
 */
+
+"CFBundleDisplayName" = "Сколько?";

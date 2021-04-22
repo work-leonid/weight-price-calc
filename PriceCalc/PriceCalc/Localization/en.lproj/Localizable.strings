@@ -1,0 +1,14 @@
+/* 
+  Localize.strings
+  PriceCalc
+
+  Created by Leonid Nazarov on 22.04.2021.
+  
+*/
+
+"navbar.title" = "How much?";
+"input.placeholder.weight" = "Weight";
+"input.placeholder.price" = "Price";
+"button.clearAll" = "Clear all";
+"%@ text.perkg" = "%@/kg";
+"" = "";
