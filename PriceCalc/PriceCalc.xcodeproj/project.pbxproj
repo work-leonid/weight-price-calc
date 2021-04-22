@@ -14,8 +14,9 @@
 		FB215363262E21D900BE529D /* TextFieldFirstResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB215362262E21D900BE529D /* TextFieldFirstResponder.swift */; };
 		FB215366262EFA8A00BE529D /* KeyboardAvoidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB215365262EFA8A00BE529D /* KeyboardAvoidance.swift */; };
 		FB215369262F308500BE529D /* KeyboardAvoidance+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB215368262F308500BE529D /* KeyboardAvoidance+Extensions.swift */; };
-		FB21536D262F31A600BE529D /* AppStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB21536C262F31A600BE529D /* AppStrings.swift */; };
 		FBAA5C6C263153CF004AAA7A /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAA5C6B263153CF004AAA7A /* CalculatorView.swift */; };
+		FBAA5C7726315B07004AAA7A /* Localize.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5C7926315B07004AAA7A /* Localize.strings */; };
+		FBAA5C7C26315B0E004AAA7A /* Plurals.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = FBAA5C7E26315B0E004AAA7A /* Plurals.stringsdict */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +29,11 @@
 		FB215362262E21D900BE529D /* TextFieldFirstResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldFirstResponder.swift; sourceTree = "<group>"; };
 		FB215365262EFA8A00BE529D /* KeyboardAvoidance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAvoidance.swift; sourceTree = "<group>"; };
 		FB215368262F308500BE529D /* KeyboardAvoidance+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyboardAvoidance+Extensions.swift"; sourceTree = "<group>"; };
-		FB21536C262F31A600BE529D /* AppStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStrings.swift; sourceTree = "<group>"; };
 		FBAA5C6B263153CF004AAA7A /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
+		FBAA5C7826315B07004AAA7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localize.strings; sourceTree = "<group>"; };
+		FBAA5C7B26315B0B004AAA7A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localize.strings; sourceTree = "<group>"; };
+		FBAA5C7D26315B0E004AAA7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Plurals.stringsdict; sourceTree = "<group>"; };
+		FBAA5C8026315B11004AAA7A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Plurals.stringsdict; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +66,9 @@
 		FB215350262DE5D600BE529D /* PriceCalc */ = {
 			isa = PBXGroup;
 			children = (
+				FBAA5C7626315AF8004AAA7A /* Localization */,
 				FB21536F262F36B400BE529D /* Views */,
 				FB215351262DE5D600BE529D /* PriceCalcApp.swift */,
-				FB215353262DE5D600BE529D /* MainView.swift */,
-				FBAA5C6B263153CF004AAA7A /* CalculatorView.swift */,
-				FB21536C262F31A600BE529D /* AppStrings.swift */,
 				FB215368262F308500BE529D /* KeyboardAvoidance+Extensions.swift */,
 				FB215365262EFA8A00BE529D /* KeyboardAvoidance.swift */,
 				FB215362262E21D900BE529D /* TextFieldFirstResponder.swift */,
@@ -88,8 +90,19 @@
 		FB21536F262F36B400BE529D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FBAA5C6B263153CF004AAA7A /* CalculatorView.swift */,
+				FB215353262DE5D600BE529D /* MainView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FBAA5C7626315AF8004AAA7A /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				FBAA5C7E26315B0E004AAA7A /* Plurals.stringsdict */,
+				FBAA5C7926315B07004AAA7A /* Localize.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +146,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = FB215345262DE5D600BE529D;
 			productRefGroup = FB21534F262DE5D600BE529D /* Products */;
@@ -151,6 +165,8 @@
 			files = (
 				FB215359262DE5D800BE529D /* Preview Assets.xcassets in Resources */,
 				FB215356262DE5D800BE529D /* Assets.xcassets in Resources */,
+				FBAA5C7C26315B0E004AAA7A /* Plurals.stringsdict in Resources */,
+				FBAA5C7726315B07004AAA7A /* Localize.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +177,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB21536D262F31A600BE529D /* AppStrings.swift in Sources */,
 				FBAA5C6C263153CF004AAA7A /* CalculatorView.swift in Sources */,
 				FB215363262E21D900BE529D /* TextFieldFirstResponder.swift in Sources */,
 				FB215366262EFA8A00BE529D /* KeyboardAvoidance.swift in Sources */,
@@ -172,6 +187,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FBAA5C7926315B07004AAA7A /* Localize.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBAA5C7826315B07004AAA7A /* en */,
+				FBAA5C7B26315B0B004AAA7A /* ru */,
+			);
+			name = Localize.strings;
+			sourceTree = "<group>";
+		};
+		FBAA5C7E26315B0E004AAA7A /* Plurals.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FBAA5C7D26315B0E004AAA7A /* en */,
+				FBAA5C8026315B11004AAA7A /* ru */,
+			);
+			name = Plurals.stringsdict;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FB21535B262DE5D800BE529D /* Debug */ = {
