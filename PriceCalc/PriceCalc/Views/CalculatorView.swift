@@ -12,6 +12,7 @@ struct CalculatorView: View {
     @State private var weightInput = ""
     @State private var priceInput = ""
     @State private var checkAmount = 0
+//    var count = 0
     
     var price: Int {
         let priceNumber = Int(priceInput) ?? 0
@@ -25,7 +26,9 @@ struct CalculatorView: View {
             Text("\(price)₽")
                 .font(.system(size: 100, weight: .thin))
                 .padding(.vertical, -10)
-            Text("за \(weightInput) грамм")
+            Text("fruit-count \(Int(weightInput) ?? 0)", tableName: "Plurals")
+//                Text("gramms \(weightInput)", tableName: "Plurals")
+//            Text("за \(weightInput) грамм")
                 .font(.title3)
                 .foregroundColor(.secondary)
         }
@@ -76,6 +79,6 @@ struct CalculatorView: View {
 struct CalculatorView_Previews: PreviewProvider {
     static var previews: some View {
         CalculatorView()
-            .environment(\.locale, .init(identifier: "en"))
+            .environment(\.locale, .init(identifier: "ru"))
     }
 }
